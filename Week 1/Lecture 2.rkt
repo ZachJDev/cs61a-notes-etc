@@ -1,2 +1,0 @@
-#lang simply-scheme
-
