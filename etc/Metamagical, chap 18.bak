@@ -1,0 +1,22 @@
+
+#lang simply-scheme
+; Solved when reading Metamagical Themas, D.R. Hofstadter, chap. 18
+
+(define (hotpo x)
+  (cond ((equal? (modulo x 2)0) (/ x 2))
+        (else (+ 1 (* 3 x)))))
+
+
+(define (buildHotpo x)
+  (if (equal? x 1)
+      x
+      (se  x (buildHotpo (hotpo x)))))
+
+(define (atomcount sent)
+  (cond ((empty? sent) 0)
+    ((word? (first sent)) (+ 1 (atomcount (bf sent))))
+        ((list? (first sent)) (+ (atomcount (first sent)) (atomcount (bf sent)))))
+  )
+
+(atomcount '(((ac ab cb) ac (ba bc ac)) ab (( cb ca ba) cb (ac ab cb))))
+
