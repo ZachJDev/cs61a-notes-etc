@@ -1,0 +1,5 @@
+[[Reading - Sections 2.1 and 2.2.1]]
+[[cs61a/Week 4/Homework and Labs]]
+[[Lecture 9 - Data Abstraction]]
+[[Lecture 10 - Sequences]]
+[[ Lecture 11 - Example; Calculator]]

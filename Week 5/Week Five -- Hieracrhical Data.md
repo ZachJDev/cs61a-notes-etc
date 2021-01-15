@@ -1,0 +1,5 @@
+[[Reading - Section 2.2.2-2.2.3, 2.3.1, 2.3.3]]
+[[Homework and Labs | Homework and Labs]]
+[[Lecture 12 - Hierarchial Data One]]
+[[Lecture 13 - Hierarchial Data Two]]
+[[Lecture 14 - Scheme-1 Interpreter]]

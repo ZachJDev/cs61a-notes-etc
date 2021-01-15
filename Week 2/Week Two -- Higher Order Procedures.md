@@ -1,0 +1,6 @@
+[[Reading - Section 1.3]]
+[[cs61a/Week 2/Homework and Labs | Homework and Labs]]
+[[Lecture 3 - Higher Order Procedures One]]
+[[Lecture 4 - Higher Order Procedures Two]]
+[[Lecture 5 - User Interface - Alan Kay One]]
+[[Lecture 6 - User Interface - Alan Kay Two]]
