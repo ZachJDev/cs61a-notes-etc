@@ -25,6 +25,88 @@
 		(sum term (next a) b))))
 ```
 
+### 1.3.2 Constructing Procedures using `Lambda`
+
+- `lambda` is a keyword analogous to saying 'the procedure that...'
+	- essentially anonymous functions in JS, and I think Python also uses `lamda`
+-	using `lamda` lets us get away with specifying functions without needing to explicitly define them. This cuts out a lot of extraneous, one-off definitions (like we find in the exercies below) which keeps our environment cleaner.
+-	usage: `(lamda (<formal params>) <body>)`
+-	comes from Lisp, which took the idea of lambda from Alonzo Church's lambda calculus, which he developed to study functions and their applications.
+-	the related keyword `let` allows us to define local variables (i.e. variables that we won't access outside of some function).
+-	the variables described by `let` are only available in the body of the `let`  expression, as seen below.
+-	usage:
+ ```Scheme
+ (let ((<var1> <expr1>)
+ 	   (<var2> <expr2>)
+	   ...
+	   (<varN> <exprN>)
+	   <body>)
+ ```
+	 
+### 1.3.3: Procedures as General Methods
+- Like the `sum` and `integral` procedures above, we explore two more examples as procedures as generalized methods in this section.
+
+### 1.3.4: Procedures as Returned Values
+-	the ability to return procedures from procedures. Think JS closures (?). This ability gives programming languages even more expressive power.
+#### The `sqrt` function from 1.1.7 vs the `sqrt` function from 1.3.4:
+Original `sqrt` function:
+```Scheme
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.0001))
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+
+(define (sqrt-iter guess x)
+  (if(good-enough? guess x)
+     guess
+     (sqrt-iter (improve guess x)
+                x)))
+
+(define (117-sqrt x)
+  (sqrt-iter 1.0 x))
+
+```
+`sqrt` with Higher-order Procedures:
+
+```Scheme
+(define tolerance 0.0001)
+(define (close-enough? x y)
+  (< (abs (- x y)) tolerance))
+  
+(define (fixed-point f first-guess)
+  (define (try guess)
+    (let ((next (f guess)))
+      (if (close-enough? guess next)
+          next
+          (try next))))
+  (try first-guess))
+
+(define (average-damp f)
+  (lambda (x) (average x (f x))))
+  
+(define (sqrt x)
+(fixed-point (average-damp (lambda (y) (/ x y)) 1.0)
+```
+
+These two procedures describe the same function -- that is, we will end up finding the square root of a number using the same steps. 
+
+first, a bit about what each of the higher-order functions does:
+- `fixed-point` tries to find an *x* where *f(x) = x* for a given function. It does this by continually calling the function on itself. In mathematical terms: *f(f(f(f(...x))...*.  Simply, it calls the next function on the guess and checks to see if there the change was small enough to a point we we can consider it 'correct'.
+- `average-damp` takes a value `x` and a function `x` and returns the average of `x` and `(f x)`. In mathematical terms: *g(x) = (x + f(x)) / 2*.
+- in which case, the second `sqrt` function can be said to compute the fixed-point of  the function of average-damping `(lambda (y) (/ x y)`. 
+- We can even expand `sqrt` a bit to see that exactly:
+
+```Scheme
+(define (sqrt x)
+(fixed-point (average-damp (lambda (y) (/ x y)) 1.0)
+
+(define (sqrt x)
+(fixed-point (lambda (d) (average d (lambda (y) (/ x y)) x))
+ 1.0)
+
+```
+
 ## Exercises
 ### 1.29:
 uses the `sum` function from above and `odd?` and `even?` from simply-scheme
