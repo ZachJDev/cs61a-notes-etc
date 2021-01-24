@@ -2,7 +2,7 @@
 Course Notes from the lecturer: https://people.eecs.berkeley.edu/~bh/61a-pages/
 
 Programs for the class: https://inst.eecs.berkeley.edu/~cs61a/sp09/library/
-
+this is a test.
 ---
 
 [[Week One -- Functional Programming]]
