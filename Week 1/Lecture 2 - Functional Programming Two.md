@@ -16,7 +16,7 @@ FUNCTIONAL PROGRAMMING
 
 functional programming is especially important for parallelization
 
-a function has zero or more inputs and one output. everytime you put in the same input(s) you will receive the same output. a function doesn't care what's inside itself -- we can call two functions the same if for every input they produce identical outputs. 
+a function has zero or more inputs and one output. everytime you put in the same input(s) you will receive the same output. a function doesn't care what's inside itself -- we can call two functions the same if for every input they produce identical outputs. I *think* this makes sense from a mathematical perspective: If for every input the same output is produced, then one should be able to use algebra, etc, to convert the procedures of one to the other.
 
 Procedures are sequences of steps for a function. i.e. It DOES care about the differece between it and a similiar-output-producing function.
 

@@ -39,7 +39,7 @@
                    (hanoi (- disks 1) aux target source ))))))
 
 ;(count
- (hanoi 9 'a 'b 'c)
+ (hanoi 5 'a 'b 'c)
 ;)
 
         
