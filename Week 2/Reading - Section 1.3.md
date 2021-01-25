@@ -48,64 +48,12 @@
 
 ### 1.3.4: Procedures as Returned Values
 -	the ability to return procedures from procedures. Think JS closures (?). This ability gives programming languages even more expressive power.
-#### The `sqrt` function from 1.1.7 vs the `sqrt` function from 1.3.4:
-Original `sqrt` function:
-```Scheme
-(define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.0001))
-(define (improve guess x)
-  (average guess (/ x guess)))
-
-
-(define (sqrt-iter guess x)
-  (if(good-enough? guess x)
-     guess
-     (sqrt-iter (improve guess x)
-                x)))
-
-(define (117-sqrt x)
-  (sqrt-iter 1.0 x))
-
-```
-`sqrt` with Higher-order Procedures:
-
-```Scheme
-(define tolerance 0.0001)
-(define (close-enough? x y)
-  (< (abs (- x y)) tolerance))
-  
-(define (fixed-point f first-guess)
-  (define (try guess)
-    (let ((next (f guess)))
-      (if (close-enough? guess next)
-          next
-          (try next))))
-  (try first-guess))
-
-(define (average-damp f)
-  (lambda (x) (average x (f x))))
-  
-(define (sqrt x)
-(fixed-point (average-damp (lambda (y) (/ x y)) 1.0)
-```
-
-These two procedures describe the same function -- that is, we will end up finding the square root of a number using the same steps. 
-
-first, a bit about what each of the higher-order functions does:
-- `fixed-point` tries to find an *x* where *f(x) = x* for a given function. It does this by continually calling the function on itself. In mathematical terms: *f(f(f(f(...x))...*.  Simply, it calls the next function on the guess and checks to see if there the change was small enough to a point we we can consider it 'correct'.
-- `average-damp` takes a value `x` and a function `x` and returns the average of `x` and `(f x)`. In mathematical terms: *g(x) = (x + f(x)) / 2*.
-- in which case, the second `sqrt` function can be said to compute the fixed-point of  the function of average-damping `(lambda (y) (/ x y)`. 
-- We can even expand `sqrt` a bit to see that exactly:
-
-```Scheme
-(define (sqrt x)
-(fixed-point (average-damp (lambda (y) (/ x y)) 1.0)
-
-(define (sqrt x)
-(fixed-point (lambda (d) (average d (lambda (y) (/ x y)) x))
- 1.0)
-
-```
+-	*compound procedures* allow us to express 'general methods of computing as explicit elements in our programming language'. And *higher-order procedures* allow us to 'manipulate these general methods to create further abstractions'.
+-	[[cs61a/Glossary | First-Class Functions:]] ...
+	-	can be named by variables
+	-	may be passed as arguments as procedures
+	-	may be returned as the result of a procedure
+	-	may be included in data structures.
 
 ## Exercises
 ### 1.29:
@@ -205,4 +153,14 @@ b:
 
 (product-rel-primes-below 10) ; 189
 (* 9 7 3) ; 189
+```
+### 1.40
+```Scheme
+(define (cubic a b c)
+  (lambda (x)
+    (+ (cube x) (* (square x) a) (* b x) c)))
+
+(newtons-method (cubic 5 9 20) 1.0) ; -3.9999
+
+((cubic 5 9 20) -4) ; 0
 ```
