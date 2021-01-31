@@ -41,6 +41,8 @@ In this Fib example, the number of required computations grows expotentially wit
 
 While  tree-recursion may not be worth it for numbers, it is very powerful for operations on heirarchial or tree-like structures. And the author makes a good point that the procedure resulting in the tree-recursive process is a very clear and straightforward translation of the Fib sequence into Lisp, while the iterative process is not nearly so. 
 
+I'm trying to solve this `count-change`-but-better problem, and the first idea that I have is, like `fib` I'll want to start from the bottom and go up, just keeping in mind when I need to stop.
+
 ## 1.2.3 Orders of Growth
 
 generalized big-O. (actually, a much more rigourous definition than I've been given in the past!) Because big-O (or Theta, in this case) notation will tell us that a procedure needing 10000n^2 resources is equivalent to one needing n^2 resources, it's more useful for predicting how a process will run with different inputs than for actual resource-usage computation.
