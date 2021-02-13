@@ -151,7 +151,7 @@ Q. 1:
     	(if (>= 0 (length cards)) total
     	(let ( (card-val (get-value (first cards))))
       	(cond ((member? card-val '(K J Q)) (iter (bf cards) (+ total 10)))
-        	     ((equal? card-val 'A) (iter (bf cards) (+ total (if (<= total 11) 10 1))))
+        	     ((equal? card-val 'A) (iter (bf cards) (+ total (if (<= total 10) 11 1))))
             	 (else (iter (bf cards) (+ total card-val)))))))
   	(iter (sort cards) 0))
   
