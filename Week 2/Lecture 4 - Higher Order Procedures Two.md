@@ -2,11 +2,17 @@ Link: https://archive.org/details/ucberkeley_webcast_ZvH3wF2qg7Q
 
 ---
 
-The big idea this week is "Procedures as data"
+The big idea this week is "Procedures as data", i.e. [[../Glossary | Higher-Order Procedures]]
 
 we could theoretically write a language where the only built-in functionality is the ability to create a function and the ability to call functions.
 
-When did JS get first-class functions? it doesn't seem like they were during this lecture (2011).
+We can generalize patterns using variable numbers (like when computing various areas which all contain some *x* multipled by the square of a radius or side).
+
+We can also generalize a pattern in which a function varies (like when computing sums of various functions, sums of squares or sums of cubes, e.g.)
+
+Higher-order functions can also be *unnamed functions*, using **lambda** in Scheme. I don't think you can return a named function in scheme, and I can't think of why you'd want to...
+
+When did JS get first-class functions? it doesn't seem like they were part of it during this lecture (2011), but "callback hell" certainly existed long before then, right?
 
 First-class data types:
 -	can be named by variables
